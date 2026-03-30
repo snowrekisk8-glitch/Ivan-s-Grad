@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Congrats Kuya Ivan!</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset & base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Lora', serif;
+      background: linear-gradient(135deg, #6fb1fc, #3a8dde);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3rem;
+      text-shadow: 2px 2px rgba(0,0,0,0.3);
+    }
+
+    /* Message Card */
+    .card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 2rem 3rem;
+      max-width: 900px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Typewriter effect */
+    #message {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      border-right: .15em solid rgba(255,255,255,0.8);
+      animation: blink .75s step-end infinite;
+    }
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: rgba(255,255,255,0.8); }
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(255,255,255,0.7);
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
+      z-index: 0;
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 50%;
+    }
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: 10px; top: 0; }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(45deg) scale(1); opacity: 1; }
+      100% { transform: translateY(-800px) rotate(45deg) scale(1.5); opacity: 0; }
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎓 Congrats Kuya Ivan! 🎓</h1>
+  </header>
+
+  <div class="card">
+    <p id="message"></p>
+  </div>
+
+  <script>
+    const message = `Hilo koya Ivan! BAHAHAHAHAHA still can’t believe nga magraduate na kamo huhu. After all, it only has been a year since we’ve really interacted. Hikamo at an ak mga role model from the sidelines HAHAHAHA. Sabud-sabudon ko la at kam ha pathways, not thinking nga usa ka han magiging pillars kun ano man nak achieve yana na school year.
+
+Tikita mala bawo ak hat ha nak grades for 4th quarter, tas naging secretary ak, pepti pepti pa taak pagsala haim kun Kayano nagging miserable nga maupay nak kinabuhi as a grade 11 student HAHAHAHA. You were one of the reasons kun Kayano nahiguwa ak han ak comfort zone HAHAHAHA. Thank you for your guidance and support all throughout han yana na year. Thank you for being the best president to work with, bis kun danay diak nabali or kun tinatakasan ko danay tak responsibilities for the sake of being sane.
+
+But aside from that, you guys are graduating na! never ever forget nga aadi la kami para haiyo, puyde pa kam bumalik ha tnhs if karuyag niyo HAHAHAHA. Tiyo life ha college will be full of ups and downs but never forget to mocha-mocha. Para at least habang stressed kam hit deadlines slayable la gihap kam diba? HAHAHAHAHA.
+
+You will meet a lot of people, different kinds of people, but never ever forget your roots while chasing fame and success. There will be times nga magiging unbearable it imo life a college student, pero I know nga kaya it nim, hiika pa! Dire la dama it life, it people dama, mayda haimo maghahatak pataas, mayda dama maghahatak pailarom pero it hinumdumi nga hi James Ivan ka, taga Taft. It taga taft naluros nala it LOL.
+
+Aside from that, never forget nga students la gihap kamo, never forget to have fun and enjoy life while wara pa kam gidadako-I nga responsibilities. Gumuwas na ngani kam hit college, may works nak am all and all, iba na it iy focus. So, yana, habang may time pa kam mag enjoy, lubus-lubusa na niyo.
+
+Final message: I am always rooting for you success but never lose yourself in the process.`;
+
+    const messageEl = document.getElementById("message");
+    let index = 0;
+
+    function typeWriter() {
+      if(index < message.length){
+        messageEl.innerHTML += message.charAt(index);
+        index++;
+        setTimeout(typeWriter, 30); // Adjust speed
+      }
+    }
+
+    window.onload = () => {
+      typeWriter();
+
+      // Generate floating hearts
+      for(let i=0; i<50; i++){
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random()*window.innerWidth+'px';
+        heart.style.animationDuration = (4 + Math.random()*4)+'s';
+        heart.style.width = (10 + Math.random()*20)+'px';
+        heart.style.height = heart.style.width;
+        document.body.appendChild(heart);
+      }
+    }
+  </script>
+</body>
+</html>
